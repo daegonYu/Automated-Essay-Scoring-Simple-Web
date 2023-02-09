@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="자신의 에세이 글에 대한 3가지 요소를 평가해준다." />
+        <meta name="author" content="유대곤" />
+        <title>나의 글 평가하기</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!--<link href="css/styles.css" rel="stylesheet" />-->
+        
+        <!--
+        <script>
+            window.onload=function() {
+             document.getElementById("preview").onclick=processText;
+            }
+            
+            function processText() {
+             var txtBox = document.getElementById("inputbox");
+             var lines = txtBox.value.split("\n");
+            
+             // generate HTML version of text
+             var resultString  = "<p>";
+             for (var i = 0; i < lines.length; i++) {
+               resultString += lines[i] + "<br />";
+             }
+             resultString += "</p>";
+            
+             // print out to page
+             var   blk   = document.getElementById("result");
+             blk.innerHTML  =  resultString; 
+            }       
+            </script>
+        -->
+    </head>
+
+
+    <body>
+        <div style = "text-align:center; padding-top:50px">
+            <h3>여기서 아래 3개의 항목에 대한 자신의 에세이 점수를 측정해보아요.</h3>
+            <div style="border: 1px solid black;" cols="100"> {{ essay }} </div>
+        </div>
+
+        <div>
+            <div style="float:left; text-align:center;">
+                <h3>논리성</h3><br>
+                {% if True %}
+                <img src="{{ url_for('static', filename="images/logical.png") }}" style="width:480px"><br>
+                {% endif %}
+                <h3>상위 {{ n }}%</h3>
+            </div>
+            <div style="float:left; text-align:center;">
+                <h3>참신성</h3><br>
+                {% if True %}
+                <img src="{{ url_for('static', filename="images/novelty.png") }}" style="width:480px"><br>
+                {% endif %}
+                <h3>상위 {{ n }}%</h3>
+            </div>
+            <div style="float:left; text-align:center;">
+                <h3>설득력</h3><br>
+                {% if True %}
+                <img src="{{ url_for('static', filename="images/persuasive.png") }}" style="width:480px"><br>
+                {% endif %}
+                <h3>상위 {{ n }}%</h3>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center; padding-top:40px">
+            <h5> 총점 : {{ total_point }}점</h5>
+        </div>
+    </body>
+</html>
