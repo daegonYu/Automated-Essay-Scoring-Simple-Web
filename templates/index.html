@@ -9,57 +9,36 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        
-        <!--
-        <script>
-            window.onload=function() {
-             document.getElementById("preview").onclick=processText;
-            }
-            
-            function processText() {
-             var txtBox = document.getElementById("inputbox");
-             var lines = txtBox.value.split("\n");
-            
-             // generate HTML version of text
-             var resultString  = "<p>";
-             for (var i = 0; i < lines.length; i++) {
-               resultString += lines[i] + "<br />";
-             }
-             resultString += "</p>";
-            
-             // print out to page
-             var   blk   = document.getElementById("result");
-             blk.innerHTML  =  resultString; 
-            }       
-            </script>
-        -->
+        <!--<link href="css/styles.css" rel="stylesheet" />-->
     </head>
 
 
     <body style = "text-align:center; padding-top:50px">
-        <h3>여기서 아래 3개의 항목에 대한 자신의 에세이 점수를 측정해보아요.</h3>
-        <div style="padding-top:10px">
-            <h5> 1) 논리성</h5>
-            <h5> 2) 참신성</h5>
-            <h5> 3) 설득력</h5>
+        <h2>여기서 아래 3개의 항목에 대한 자신의 에세이 점수를 측정해보아요.</h2>
+        <!--
+        <div style="padding-top:5px">
+            <h3> 1) 논리성</h3>
+            <h3> 2) 참신성</h3>
+            <h3> 3) 설득력</h3>
         </div>
+        -->
     
         <form action="/result" method="POST">
-            <textarea id="inputbox" type="text" name="essay" cols="100" rows="8" maxlength="512" minlength="1" placeholder = "Input your essay!"></textarea>
-            <div style="padding-top:10px">
+            <textarea type="text" name="essay" minlength="1" maxlength="512" placeholder = "최대 500글자 이내로 자신의 글을 작성해보세요!" style="width:100%; height:160px"></textarea>
+            <div style="padding-top:15px">
                 <div>
-                    <button type="submit" id="btt">에세이 점수 확인하기</button>
+                    <button type="submit" id="btt" style= "background-color: skyblue;
+                    color: white;
+                    border: none;
+                    padding: 10px 30px;">에세이 점수 확인하기</button>
                 </div>
             </div>
         </form> 
 
-        {{ essay }}
-
         <!-- <div id="result"></div> -->     <!-- result란 id에 값 저장됨-->
         
 
-
+        <!--
         <div style="display: flex; align-items: center; justify-content: center; padding-top:40px">
             <div><h5> 1) 논리성 : {{logical_point}} </h5></div>
             <div><h5> 2) 참신성 </h5></div>
@@ -69,5 +48,6 @@
         <div style="display: flex; align-items: center; justify-content: center; padding-top:40px">
             <h5> 총점 </h5>
         </div>
+        -->
     </body>
 </html>

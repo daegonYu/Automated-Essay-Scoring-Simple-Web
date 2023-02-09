@@ -38,37 +38,40 @@
 
 
     <body>
-        <div style = "text-align:center; padding-top:50px">
-            <h3>여기서 아래 3개의 항목에 대한 자신의 에세이 점수를 측정해보아요.</h3>
-            <div style="border: 1px solid black;" cols="100"> {{ essay }} </div>
-        </div>
-
         <div>
-            <div style="float:left; text-align:center;">
-                <h3>논리성</h3><br>
-                {% if True %}
-                <img src="{{ url_for('static', filename="images/logical.png") }}" style="width:480px"><br>
-                {% endif %}
-                <h3>상위 {{ n }}%</h3>
+            <div style = "text-align:center; padding-top:50px">
+                <h2>에세이 결과 확인~!</h2>
+                <div style="border: 1px solid black;" cols="100" padding="50px"> {{ essay }} </div>
             </div>
-            <div style="float:left; text-align:center;">
-                <h3>참신성</h3><br>
-                {% if True %}
-                <img src="{{ url_for('static', filename="images/novelty.png") }}" style="width:480px"><br>
-                {% endif %}
-                <h3>상위 {{ n }}%</h3>
-            </div>
-            <div style="float:left; text-align:center;">
-                <h3>설득력</h3><br>
-                {% if True %}
-                <img src="{{ url_for('static', filename="images/persuasive.png") }}" style="width:480px"><br>
-                {% endif %}
-                <h3>상위 {{ n }}%</h3>
-            </div>
-        </div>
 
-        <div style="display: flex; align-items: center; justify-content: center; padding-top:40px">
-            <h5> 총점 : {{ total_point }}점</h5>
+            <div style="padding-top:20px">
+                <div>   <!-- style="float:left; text-align:center;" -->
+                    {% if True %}
+                    <img src="{{ url_for('static', filename="images/logical.png") }}" style="width:400px"><br>
+                    {% endif %}
+                    <h3>상위 {{ grade_list[0] }}%</h3>
+                </div>
+                <div>
+                    {% if True %}
+                    <img src="{{ url_for('static', filename="images/novelty.png") }}" style="width:400px"><br>
+                    {% endif %}
+                    <div>
+                    <h3>참신성 {{ point_list[1] }}점</h3>
+                    <h3>평균 {{ mean_list[1] }}점</h3>
+                    <h3>상위 {{ grade_list[1] }}%</h3>
+                    </div>
+                </div>
+                <div>
+                    {% if True %}
+                    <img src="{{ url_for('static', filename="images/persuasive.png") }}" style="width:400px"><br>
+                    {% endif %}
+                    <h3>상위 {{ grade_list[2] }}%</h3>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: center; padding-top:40px">
+                <h5> 총점 : {{ total_point }}점</h5>
+            </div>
         </div>
     </body>
 </html>
