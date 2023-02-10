@@ -40,12 +40,12 @@ persuasive_hub_points_list = list(persuasive_hub_points)
 
 x = np.arange(2)
 
-title_font = {
-    'fontsize': 16,
-    'fontweight': 'bold'
-}
+# title_font = {        # plt
+#     'fontsize': 16,
+#     'fontweight': 'bold'
+# }
 
-
+font_size = 15
 
 @app.route('/')
 def home():
@@ -55,7 +55,7 @@ def home():
 def result():
     if request.method == 'POST':
         essay = request.form["essay"]
-        essay = re.sub('\n', ' ', essay)        # 점수 오류는 여기 밖에 없지 이 변수 밖에 없어
+        essay = re.sub('\n|#|"', ' ', essay)        # 점수 오류는 여기 밖에 없지 이 변수 밖에 없어
         print(essay)
         input_sentence = [essay,""]
         logical_point = logical_model.result_point(input_sentence, mode_='logical')
@@ -80,30 +80,55 @@ def result():
         
         points1 = [logical_point, logical_mean]
         names = ['my logical point', 'logical mean']
-        plt.title("logical point", fontdict=title_font)
+        plt.title("logical point")
         plt.xticks(x,names)
         plt.bar(x, points1, color=['blue','green'])
-    
-        plt.savefig('static/images/logical.png')     
+        plt.ylim(0, max(points1)+10)
+        for i, v in enumerate(x):
+            plt.text(v, points1[i], points1[i],                 # 좌표 (x축 = v, y축 = y[0]..y[1], 표시 = y[0]..y[1])
+            fontsize = font_size, 
+            color='black',
+            horizontalalignment='center',  # horizontalalignment (left, center, right)
+            verticalalignment='bottom')    # verticalalignment (top, center, bottom)
+
+        plt.savefig('static/images/logical.png') 
+        plt.show()    
+        plt.clf()
         
         
         points2 = [novelty_point, novelty_mean]
         names = ['my novelty point', 'novelty mean']
-        plt.title("novelty point", fontdict=title_font)
+        plt.title("novelty point")
         plt.xticks(x,names)
-        plt.bar(x, points2,color=['blue','green'])
- 
-        plt.savefig('static/images/novelty.png')   
+        plt.bar(x, points2, color=['blue','green'])
+        plt.ylim(0, max(points2)+10)
+        for i, v in enumerate(x):
+            plt.text(v, points2[i], points2[i],                 # 좌표 (x축 = v, y축 = y[0]..y[1], 표시 = y[0]..y[1])
+            fontsize = font_size, 
+            color='black',
+            horizontalalignment='center',  # horizontalalignment (left, center, right)
+            verticalalignment='bottom')    # verticalalignment (top, center, bottom)
         
+        plt.savefig('static/images/novelty.png')   
+        plt.show()
+        plt.clf()
         
         points3 = [persuasive_point, persuasive_mean]
         names = ['my persuasive point', 'persuasive mean'] 
-        plt.title("persuasive point", fontdict=title_font)
+        plt.title("persuasive point")
         plt.xticks(x,names)
         plt.bar(x, points3, color=['blue','green'])
+        plt.ylim(0, max(points3)+10)
+        for i, v in enumerate(x):
+            plt.text(v, points3[i], points3[i],                 # 좌표 (x축 = v, y축 = y[0]..y[1], 표시 = y[0]..y[1])
+            fontsize = font_size, 
+            color='black',
+            horizontalalignment='center',  # horizontalalignment (left, center, right)
+            verticalalignment='bottom')    # verticalalignment (top, center, bottom)
        
         plt.savefig('static/images/persuasive.png')   
-
+        plt.show()
+        plt.clf()
         
         return render_template("result.html", essay=essay, point_list=point_list, \
             total_point=total_point, grade_list=grade_list, mean_list=mean_list)
