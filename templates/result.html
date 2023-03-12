@@ -6,35 +6,7 @@
         <meta name="description" content="자신의 에세이 글에 대한 3가지 요소를 평가해준다." />
         <meta name="author" content="유대곤" />
         <title>나의 글 평가하기</title>
-        <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <!--<link href="css/styles.css" rel="stylesheet" />-->
-        
-        <!--
-        <script>
-            window.onload=function() {
-             document.getElementById("preview").onclick=processText;
-            }
-            
-            function processText() {
-             var txtBox = document.getElementById("inputbox");
-             var lines = txtBox.value.split("\n");
-            
-             // generate HTML version of text
-             var resultString  = "<p>";
-             for (var i = 0; i < lines.length; i++) {
-               resultString += lines[i] + "<br />";
-             }
-             resultString += "</p>";
-            
-             // print out to page
-             var   blk   = document.getElementById("result");
-             blk.innerHTML  =  resultString; 
-            }       
-            </script>
-        -->
-
         <style>
             *
             {
@@ -42,9 +14,13 @@
                 margin: 0;
                 padding: 0;
             }
+            body
+            {
+                background-color: white;
+            }
             .wrapper
             {
-                width: 1180px;
+                width: 1280px;
                 margin: 0 auto;
             }
             .essay-title
@@ -52,7 +28,8 @@
                 font-size: 30px;
                 font-weight: 700;
                 text-align: center;
-                margin: 40px 0 0 0;
+                padding: 40px 0 0 0;
+                margin: 0 0 0 0;
             }
             .essay-word
             {
@@ -60,7 +37,7 @@
             }
             .essay-content
             {
-                width: 980px;
+                width: 1080px;
                 font-size: 16px;
                 border: 2px solid black; 
                 padding: 10px;
@@ -69,7 +46,7 @@
             .result-container
             {
                 display: flex;
-                justify-content: space-between;
+                justify-content: space-around;
                 margin: 54px 0 0 0;
 
             }
@@ -140,7 +117,7 @@
                 height: 336px;
                 background-size: 439px 362px;
                 background-position: -27px;
-                background-image: url(/static/images/persuasive.png);
+                background-image: url(/static/images/total.png);
                 margin: 0 auto;
             }
             .total-text
@@ -266,22 +243,26 @@
                     </div>
                 </div>
             </div>
-
+            <div class="data">
+                The average score sample brought about 14,000 essays from elementary, middle and high schools. Source: AIHUB_essage evaluation data
+            </div>
             <div class="total-score result-content">
-                <div class="total-title result-title">
-                    총 점
-                </div>
-                <div class="total-graph result-graph">
-                </div>
-                <div class="total-text result-text">
-                    <div class="by">
-                        By Daegon
+                <div class="total-page">
+                    <div class="total-title result-title">
+                        총 점
                     </div>
-                    <ul class="ul">
-                        <li>내 점수 <span class="blue">6.28점</span></li>
-                        <li>평균 <span class="green">41.78점</span></li>
-                        <li>상위 73%</li>
-                    </ul>
+                    <div class="total-graph result-graph">
+                    </div>
+                    <div class="total-text result-text">
+                        <div class="by">
+                            By Daegon
+                        </div>
+                        <ul class="ul">
+                            <li>내 점수 <span class="blue">6.28점</span></li>
+                            <li>평균 <span class="green">41.78점</span></li>
+                            <li>상위 73%</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="total-evaluation">
                     <div class="evaluation-title">
