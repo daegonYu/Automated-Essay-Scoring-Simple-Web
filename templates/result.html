@@ -8,6 +8,7 @@
         <title>나의 글 평가하기</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
             *
             {
                 box-sizing: border-box;
@@ -37,11 +38,11 @@
             }
             .essay-content
             {
-                width: 1080px;
+                width: 1180px;
                 font-size: 16px;
                 border: 2px solid black; 
                 padding: 10px;
-                margin: 12px auto 80px auto;
+                margin: 32px auto 80px auto;
             }
             .result-container
             {
@@ -100,11 +101,15 @@
             }
             .total-score
             {
-                display: inline-block;
+                display: inline-block;   
                 width: 396px;
                 height: 480px;
                 padding: 8px 0 0 0;
-                margin: 80px 0 0 0;
+                margin: 0 0 0 0;
+            }
+            .total-page
+            {
+                display: flex;
             }
             .total-title
             {
@@ -115,9 +120,9 @@
             {
                 width: 392px;
                 height: 336px;
-                background-size: 439px 362px;
-                background-position: -27px;
-                background-image: url(/static/images/total.png);
+                background-size: 399px 343px;
+                background-position: -2px;
+                background-image: url(/static/images/total2.png);
                 margin: 0 auto;
             }
             .total-text
@@ -147,32 +152,58 @@
             footer
             {
                 margin: 0 auto;
-                padding: 50px 0 0 0;
+                padding: 50px 0 20px 0;
                 text-align: center;
                 font-size: 14px;
             }
             .total-evaluation
             {
-                width: 600px;
-                
+                width: 884px;
+                font-size: 24px;
+                padding: 20px 0 0 40px;
+                line-height: 60px;
+                border-top: 1px solid black;
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            .evaluation-title
+            {
+                font-size: 32px;
+                font-weight: 700;
+            }
+            .evaluation-element
+            {
+                font-size: 30px;
+                font-weight: 700;   
+            }
+            .evaluation-ul
+            {
+                font-size: 24px;
+                font-weight: 400;list-style-type: square;
+            }
+            .data
+            {
+                height: 50px;
+                margin: 100px 0 100px 0;
+                line-height: 46px;
+                font-size: 20px;
+                text-align: center;
+                font-weight: 700;
+                color: #444444;
+                background-color: #f4f4f4;
             }
         </style>
     </head>
 
 
     <body>
-
         <div class="wrapper">
             <div class="essay-title">
                 Checking the results of my <span class="essay-word">essay</span>
             </div>
             <div class="essay-content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sed sapiente quisquam laudantium consequuntur impedit quod temporibus ipsum doloribus nam officia libero, iure doloremque recusandae velit dignissimos fugiat exercitationem? Nam?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ea sequi totam animi, fuga id, optio rerum eum illum, corrupti temporibus vel assumenda mollitia facilis necessitatibus fugiat. Magnam, natus officia!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum repellendus totam perspiciatis. Pariatur ullam quod quae iure eius ea temporibus dolore accusantium? Consectetur, iste deserunt nulla amet minus qui fuga?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus veniam, consequuntur autem eius repudiandae iusto voluptates? Illo dolore nobis ullam, laboriosam quia consectetur, quisquam ducimus eos doloremque ex repellendus iure.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, et nisi! Ad maiores accusamus placeat, eum modi dolorem numquam commodi. Aliquam cumque temporibus eligendi rem? Iusto quos eius quidem natus.
             </div>
-
             <div class="result-container">
                 <div class="result-content">
                     <div class="result-title">
@@ -182,7 +213,7 @@
                     </div>
                     <div class="result-text">
                         <div class="by">
-                            By Daegon
+                            Below Points
                         </div>
                         <ul class="ul">
                             <li>내 점수 <span class="blue">6.28점</span></li>
@@ -199,7 +230,7 @@
                     </div>
                     <div class="result-text">
                         <div class="by">
-                            By Daegon
+                            Below Points
                         </div>
                         <ul class="ul">
                             <li>내 점수 <span class="blue">6.28점</span></li>
@@ -216,7 +247,7 @@
                     </div>
                     <div class="result-text">
                         <div class="by">
-                            By Daegon
+                            Below Points
                         </div>
                         <ul class="ul">
                             <li>내 점수 <span class="blue">6.28점</span></li>
@@ -233,7 +264,7 @@
                     </div>
                     <div class="result-text">
                         <div class="by">
-                            By Daegon
+                            Below Points
                         </div>
                         <ul class="ul">
                             <li>내 점수 <span class="blue">6.28점</span></li>
@@ -243,11 +274,15 @@
                     </div>
                 </div>
             </div>
-            <div class="data">
+        </div>>
+        <div class="data">
+            <div class="wrapper">
                 The average score sample brought about 14,000 essays from elementary, middle and high schools. Source: AIHUB_essage evaluation data
             </div>
-            <div class="total-score result-content">
-                <div class="total-page">
+        </div>
+        <div class="wrapper">
+            <div class="total-page">
+                <div class="total-score result-content">
                     <div class="total-title result-title">
                         총 점
                     </div>
@@ -255,7 +290,7 @@
                     </div>
                     <div class="total-text result-text">
                         <div class="by">
-                            By Daegon
+                            Below Points
                         </div>
                         <ul class="ul">
                             <li>내 점수 <span class="blue">6.28점</span></li>
@@ -266,10 +301,10 @@
                 </div>
                 <div class="total-evaluation">
                     <div class="evaluation-title">
-                        총평
+                        <총 평>
                     </div>
                     <div class="evaluation-text">
-                        당신의 에세이는 상위 % 중 전체적으로 글을 잘 쓰셨네요.
+                        : 당신의 에세이는 상위 % 중 전체적으로 글을 잘 쓰셨네요.
                     </div>
                     <div class="evaluation-element">
                         요소별 평가
@@ -290,12 +325,11 @@
                     </div>
                 </div>
             </div>
-
-            <footer>
-                평균 점수의 표본은 초중고 에세이 약 1만4천개를 가져왔습니다.
-                출처 : AIHUB_에세이 글 평가 데이터
-            </footer>
         </div>
+
+        <footer>
+                Made by AI Model : DaegonYu     |       Web Page : IlhanYu
+        </footer>
 
 
         <!-- <div>
