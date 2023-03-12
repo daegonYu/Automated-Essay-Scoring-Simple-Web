@@ -71,11 +71,12 @@ def result():
         
         logical_hub_points_list.sort(); novelty_hub_points_list.sort(); persuasive_hub_points_list.sort()
         
+        # 표본에 비해 몇 % 인지 계산
         my_logical_grade = (len(logical_hub_points_list) - logical_hub_points_list.index(logical_point)) / len(logical_hub_points_list) * 100
         my_novelty_grade = (len(novelty_hub_points_list) - novelty_hub_points_list.index(novelty_point)) / len(novelty_hub_points_list) * 100
         my_persuasive_grade = (len(persuasive_hub_points_list) - persuasive_hub_points_list.index(persuasive_point)) / len(persuasive_hub_points_list) * 100
         
-        grade_list = [my_logical_grade,my_novelty_grade,my_persuasive_grade]
+        grade_list = [my_logical_grade, my_novelty_grade, my_persuasive_grade]     
         grade_list = [round(grade,2) for grade in grade_list]
         
         points1 = [logical_point, logical_mean]
