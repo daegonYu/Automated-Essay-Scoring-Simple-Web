@@ -45,7 +45,7 @@ x = np.arange(2)
 #     'fontweight': 'bold'
 # }
 
-font_size = 15
+font_size = 20
 
 @app.route('/')
 def home():
@@ -71,7 +71,7 @@ def result():
         
         logical_hub_points_list.sort(); novelty_hub_points_list.sort(); persuasive_hub_points_list.sort()
         
-        # 표본에 비해 몇 % 인지 계산
+        # 점수가 상위 몇 % 인지 계산
         my_logical_grade = (len(logical_hub_points_list) - logical_hub_points_list.index(logical_point)) / len(logical_hub_points_list) * 100
         my_novelty_grade = (len(novelty_hub_points_list) - novelty_hub_points_list.index(novelty_point)) / len(novelty_hub_points_list) * 100
         my_persuasive_grade = (len(persuasive_hub_points_list) - persuasive_hub_points_list.index(persuasive_point)) / len(persuasive_hub_points_list) * 100
@@ -81,10 +81,11 @@ def result():
         
         points1 = [logical_point, logical_mean]
         names = ['my logical point', 'logical mean']
-        plt.title("logical point")
+        # plt.title("logical point")
         plt.xticks(x,names)
         plt.bar(x, points1, color=['blue','green'])
         plt.ylim(0, max(points1)+10)
+        # 그래프에 텍스트 넣기
         for i, v in enumerate(x):
             plt.text(v, points1[i], points1[i],                 # 좌표 (x축 = v, y축 = y[0]..y[1], 표시 = y[0]..y[1])
             fontsize = font_size, 
@@ -94,12 +95,12 @@ def result():
 
         plt.savefig('static/images/logical.png') 
         plt.show()    
-        plt.clf()
+        plt.clf()       # 그래프 초기화
         
         
         points2 = [novelty_point, novelty_mean]
         names = ['my novelty point', 'novelty mean']
-        plt.title("novelty point")
+        # plt.title("novelty point")
         plt.xticks(x,names)
         plt.bar(x, points2, color=['blue','green'])
         plt.ylim(0, max(points2)+10)
@@ -116,7 +117,7 @@ def result():
         
         points3 = [persuasive_point, persuasive_mean]
         names = ['my persuasive point', 'persuasive mean'] 
-        plt.title("persuasive point")
+        # plt.title("persuasive point")
         plt.xticks(x,names)
         plt.bar(x, points3, color=['blue','green'])
         plt.ylim(0, max(points3)+10)
