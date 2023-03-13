@@ -69,10 +69,11 @@
             }
             .result-graph
             {
-                width: 278px;
+                width: 260px;
                 height: 234px;
-                background-size: 308px 254px;
-                background-position: -18px -12px;
+                background-size: 260px 248px;
+                background-position: 2px -12px;
+                background-repeat: no-repeat;
             }
             .logicality-graph
             {
@@ -80,11 +81,11 @@
             }
             .novelty-graph
             {
-                background-image: url(/static/images/novelty.png);
+                background-image: url(/static/images/logical.png);
             }
             .persuasivePower-graph
             {
-                background-image: url(/static/images/persuasive.png);
+                background-image: url(/static/images/logical.png);
             }
             .basis-graph
             {
@@ -160,8 +161,8 @@
             {
                 width: 884px;
                 font-size: 24px;
-                padding: 20px 0 0 40px;
-                line-height: 60px;
+                padding: 20px 0 0 20px;
+                line-height: 36px;
                 border-top: 1px solid black;
                 border-right: 1px solid black;
                 border-bottom: 1px solid black;
@@ -179,18 +180,30 @@
             .evaluation-ul
             {
                 font-size: 24px;
-                font-weight: 400;list-style-type: square;
+                font-weight: 400;
+                list-style-type: none;
             }
             .data
             {
                 height: 50px;
                 margin: 100px 0 100px 0;
-                line-height: 46px;
+                line-height: 50px;
                 font-size: 20px;
                 text-align: center;
                 font-weight: 700;
                 color: #444444;
                 background-color: #f4f4f4;
+            }
+            .evaluation-text
+            {
+                font-size: 48px;
+                color: blue;
+                margin: 30px 0 0 0;
+            }
+            .evaluation-under
+            {
+                font-size: 20px;
+                color: black;
             }
         </style>
     </head>
@@ -301,10 +314,15 @@
                 </div>
                 <div class="total-evaluation">
                     <div class="evaluation-title">
-                        <총 평>
+                        당신의 점수는 : 
                     </div>
                     <div class="evaluation-text">
-                        : 당신의 에세이는 상위 % 중 전체적으로 글을 잘 쓰셨네요.
+                        87점
+                        <div class="evaluation-under">
+                            당신의 에세이는 상위 <span class="persent">8%</span>>
+                            전체적으로 글을 잘 쓰셨습니다.
+
+                        </div>
                     </div>
                     <div class="evaluation-element">
                         요소별 평가
