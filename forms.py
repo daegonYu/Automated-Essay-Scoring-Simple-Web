@@ -2,7 +2,6 @@ import torch
 from transformers import BertConfig, CONFIG_NAME, BertTokenizer
 from transformers import AutoModel, AutoTokenizer
 import os,sys
-sys.path.append(os.path.dirname('/home/daegon/AES/'))
 from document_bert_architectures import DocumentBertCombineWordDocumentLinear, DocumentBertSentenceChunkAttentionLSTM
 # from evaluate import evaluation
 from encoder import encode_documents

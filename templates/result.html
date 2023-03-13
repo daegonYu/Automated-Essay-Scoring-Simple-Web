@@ -81,15 +81,15 @@
             }
             .novelty-graph
             {
-                background-image: url(/static/images/logical.png);
+                background-image: url(/static/images/novelty.png);
             }
             .persuasivePower-graph
             {
-                background-image: url(/static/images/logical.png);
+                background-image: url(/static/images/persuasive.png);
             }
             .basis-graph
             {
-                background-image: url(/static/images/logical.png);
+                background-image: url(/static/images/reason.png);
             }
             .result-text
             {
@@ -97,7 +97,6 @@
                 font-size: 18px;
                 padding: 0 0 4px 20px;
                 margin: 0 20px 0 20px;
-                border: 1px solid black;
                 
             }
             .total-score
@@ -123,7 +122,7 @@
                 height: 336px;
                 background-size: 399px 343px;
                 background-position: -2px;
-                background-image: url(/static/images/total2.png);
+                background-image: url(/static/images/total.png);
                 margin: 0 auto;
             }
             .total-text
@@ -144,11 +143,11 @@
             }
             .blue
             {
-                color: #0000ff;
+                color: #E3242B;
             }
             .green
             {
-                color: #008001;
+                color: #303030;
             }
             footer
             {
@@ -208,55 +207,140 @@
         </style>
     </head>
 
-
-    <body>   
-        <div>
-            <h2>에세이 결과 확인~!</h2>
-            <div style="border: 1px solid black;" cols="100"> 
+    <body>
+        <div class="wrapper">
+            <div class="essay-title">
+                Checking the results of my <span class="essay-word">essay</span>
+            </div>
+            <div class="essay-content">
                 {{ essay }} 
             </div>
+            <div class="result-container">
+                <div class="result-content">
+                    <div class="result-title">
+                        논리성
+                    </div>
+                    <div class="logicality-graph result-graph">
+                    </div>
+                    <div class="result-text">
+                        <div class="by">
+                            Below Points
+                        </div>
+                        <ul class="ul">
+                            <li>내 점수 <span class="blue">{{ my_points[0] }}점</span></li>
+                            <li>점수표본평균 <span class="green">{{ hub_points[0] }}점</span></li>
+                            <li>상위 {{ grade_list[0] }}%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="result-content">
+                    <div class="result-title">
+                        근거의 풍부함
+                    </div>
+                    <div class="basis-graph result-graph">
+                    </div>
+                    <div class="result-text">
+                        <div class="by">
+                            Below Points
+                        </div>
+                        <ul class="ul">
+                            <li>내 점수 <span class="blue">{{ my_points[1] }}점</span></li>
+                            <li>점수표본평균 <span class="green">{{ hub_points[1] }}점</span></li>
+                            <li>상위 {{ grade_list[1] }}%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <div class="result-title">
+                        설득력
+                    </div>
+                    <div class="persuasivePower-graph result-graph">
+                    </div>
+                    <div class="result-text">
+                        <div class="by">
+                            Below Points
+                        </div>
+                        <ul class="ul">
+                            <li>내 점수 <span class="blue">{{ my_points[2] }}점</span></li>
+                            <li>점수표본평균 <span class="green">{{ hub_points[2] }}점</span></li>
+                            <li>상위 {{ grade_list[2] }}%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <div class="result-title">
+                        참신성
+                    </div>
+                    <div class="novelty-graph result-graph">
+                    </div>
+                    <div class="result-text">
+                        <div class="by">
+                            Below Points
+                        </div>
+                        <ul class="ul">
+                            <li>내 점수 <span class="blue">{{ my_points[3] }}점</span></li>
+                            <li>점수표본평균 <span class="green">{{ hub_points[3] }}점</span></li>
+                            <li>상위 {{ grade_list[3] }}%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="data">
+            <div class="wrapper">
+                Your overall score in the graph below, as well as your score rating.
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="total-page">
+                <div class="total-score result-content">
+                    <div class="total-title result-title">
+                        총 점
+                    </div>
+                    <div class="total-graph result-graph">
+                    </div>
                     
-        <div style="width: 99%; bottom:100px; padding-top:20px">
-        
-            <div style="width:33%; float:left">   <!-- style="float:left; text-align:center;" -->
-                {% if True %}
-                <img src="{{ url_for('static', filename="images/logical.png") }}" style="width:400px"><br>
-                {% endif %}
-                <div>
-                    <h3>논리성 {{ point_list[0] }}점</h3>
-                    <h3>평균 {{ mean_list[0] }}점</h3>
-                    <h3>상위 {{ grade_list[0] }}%</h3>
+                </div>
+                <div class="total-evaluation">
+                    <div class="evaluation-title">
+                        당신의 평균 점수는 : 
+                    </div>
+                    <div class="evaluation-text">
+                        {{ total_mean[0] }}점
+                        <div class="evaluation-under">
+                            
+                            전체적으로 글을 잘 쓰셨습니다.
+
+                        </div>
+                    </div>
+                    <div class="evaluation-element">
+                        요소별 평가
+                        <ul class="evaluation-ul">
+                            <li>
+                                논리성 : 
+                            </li>
+                            <li>
+                                풍부한 근거 :
+                            </li>
+                            <li>
+                                설득력 :
+                            </li>
+                            <li>
+                                참신성 :
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            <div style="width:33%; float:left">
-                {% if True %}
-                <img src="{{ url_for('static', filename="images/novelty.png") }}" style="width:400px"><br>
-                {% endif %}
-                <div>
-                <h3>참신성 {{ point_list[1] }}점</h3>
-                <h3>평균 {{ mean_list[1] }}점</h3>
-                <h3>상위 {{ grade_list[1] }}%</h3>
-                </div>
-            </div>
-
-            <div style="width:34%; float:left">
-                {% if True %}
-                <img src="{{ url_for('static', filename="images/persuasive.png") }}" style="width:400px"><br>
-                {% endif %}
-                <div>
-                    <h3>설득력 {{ point_list[2] }}점</h3>
-                    <h3>평균 {{ mean_list[2] }}점</h3>
-                    <h3>상위 {{ grade_list[2] }}%</h3>
-                </div>
-            </div>
-        <div>
-
-        <div>
-            <h4> 위 자료의 표본은 초중고 에세이 약 1만4천개를 가져왔습니다.</h4> 
-            <h4> 출처 : AIHUB_에세이 글 평가 데이터 </h4>
         </div>
-
+        <div class="wrapper">
+            위 점수의 표본은 초중고 에세이 약 1만4천개를 가져왔습니다.<br>
+            출처 : AIHub_에세이 글 평가 데이터 
+        </div>
+        <footer>
+                Made by AI Model : DaegonYu     |       Web Page : IlhanYu
+        </footer>
     </body>
 </html>
+

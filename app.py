@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 import re
-from pic import graph
+import pic
 
 app = Flask(__name__)
 
@@ -40,7 +40,8 @@ reason_mean = round(float(reason_mean),2)
 persuasive_mean = round(float(persuasive_mean),2)
 novelty_mean = round(float(novelty_mean),2)
 
-mean_list = [logical_mean, reason_mean, persuasive_mean, novelty_mean]
+hub_points = [logical_mean, reason_mean, persuasive_mean, novelty_mean]
+hub_mean = round(sum(hub_points) / len(hub_points),2)
 
 # numpy -> list
 logical_hub_points_list = list(logical_hub_points)
@@ -72,10 +73,11 @@ def result():
         reason_point = reason_model.result_point(input_sentence, mode_='reason')
         persuasive_point = persuasive_model.result_point(input_sentence, mode_='persuasive')
         novelty_point = novelty_model.result_point(input_sentence, mode_='novelty')
+        
         total_point = logical_point + reason_point + persuasive_point + novelty_point
-        
         point_list = [logical_point, reason_point, persuasive_point, novelty_point]
-        
+        my_point_mean = round(sum(point_list) / len(point_list),2)
+        total_mean = my_point_mean, hub_mean
         # 점수가 다른 학생들과 비교하여 상위 몇 % 인지 계산
         
         logical_hub_points_list.append(logical_point)
@@ -91,20 +93,22 @@ def result():
         my_novelty_grade = (len(novelty_hub_points_list) - novelty_hub_points_list.index(novelty_point)) / len(novelty_hub_points_list) * 100
         
         grade_list = [my_logical_grade, my_reason_grade, my_persuasive_grade, my_novelty_grade]     
+        my_grade_mean = round(sum(grade_list) / len(grade_list),2)
         grade_list = [round(grade,2) for grade in grade_list]
+        
         
         # 그래프 그리고 저장하기
         
-        font_size = 20
+        font_size = 22
         
-        graph(mode='logical', essay_point=logical_point, mean=logical_mean, font_size=font_size)
-        graph(mode='reason', essay_point=reason_point, mean=reason_mean, font_size=font_size)
-        graph(mode='persuasive', essay_point=persuasive_point, mean=persuasive_mean, font_size=font_size)
-        graph(mode='novelty', essay_point=novelty_point, mean=novelty_mean, font_size=font_size)
+        pic.graph(mode='logical', essay_point=logical_point, mean=logical_mean, font_size=font_size)
+        pic.graph(mode='reason', essay_point=reason_point, mean=reason_mean, font_size=font_size)
+        pic.graph(mode='persuasive', essay_point=persuasive_point, mean=persuasive_mean, font_size=font_size)
+        pic.graph(mode='novelty', essay_point=novelty_point, mean=novelty_mean, font_size=font_size)
+        pic.total_graph(mean=total_mean, my_points=point_list, hub_points=hub_points)
         
-        
-        return render_template("result.html", essay=essay, point_list=point_list, \
-            total_point=total_point, grade_list=grade_list, mean_list=mean_list)
+        return render_template("result.html", essay=essay, my_points=point_list, \
+            hub_points=hub_points, grade_list=grade_list, total_mean=total_mean)
     else:
         return render_template("index.html")
 
