@@ -6,34 +6,206 @@
         <meta name="description" content="자신의 에세이 글에 대한 3가지 요소를 평가해준다." />
         <meta name="author" content="유대곤" />
         <title>나의 글 평가하기</title>
-        <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <!--<link href="css/styles.css" rel="stylesheet" />-->
-        
-        <!--
-        <script>
-            window.onload=function() {
-             document.getElementById("preview").onclick=processText;
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+            *
+            {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
             }
-            
-            function processText() {
-             var txtBox = document.getElementById("inputbox");
-             var lines = txtBox.value.split("\n");
-            
-             // generate HTML version of text
-             var resultString  = "<p>";
-             for (var i = 0; i < lines.length; i++) {
-               resultString += lines[i] + "<br />";
-             }
-             resultString += "</p>";
-            
-             // print out to page
-             var   blk   = document.getElementById("result");
-             blk.innerHTML  =  resultString; 
-            }       
-            </script>
-        -->
+            body
+            {
+                background-color: white;
+            }
+            .wrapper
+            {
+                width: 1280px;
+                margin: 0 auto;
+            }
+            .essay-title
+            {
+                font-size: 30px;
+                font-weight: 700;
+                text-align: center;
+                padding: 40px 0 0 0;
+                margin: 0 0 0 0;
+            }
+            .essay-word
+            {
+                color: blue;
+            }
+            .essay-content
+            {
+                width: 1180px;
+                font-size: 16px;
+                border: 2px solid black; 
+                padding: 10px;
+                margin: 32px auto 80px auto;
+            }
+            .result-container
+            {
+                display: flex;
+                justify-content: space-around;
+                margin: 54px 0 0 0;
+
+            }
+            .result-content
+            {
+                width: 280px;
+                height: 370px;
+                margin: 0 0;
+                border: 1px solid black;
+            }
+            .result-title
+            {
+                text-align: center;
+                font-size: 24px;
+                font-weight: 700;
+                padding: 0 0 0 0;
+                margin: 8px 20px 0 20px;
+                border: 1px solid black;
+            }
+            .result-graph
+            {
+                width: 260px;
+                height: 234px;
+                background-size: 260px 248px;
+                background-position: 2px -12px;
+                background-repeat: no-repeat;
+            }
+            .logicality-graph
+            {
+                background-image: url(/static/images/logical.png)
+            }
+            .novelty-graph
+            {
+                background-image: url(/static/images/logical.png);
+            }
+            .persuasivePower-graph
+            {
+                background-image: url(/static/images/logical.png);
+            }
+            .basis-graph
+            {
+                background-image: url(/static/images/logical.png);
+            }
+            .result-text
+            {
+                width: 242px;
+                font-size: 18px;
+                padding: 0 0 4px 20px;
+                margin: 0 20px 0 20px;
+                border: 1px solid black;
+                
+            }
+            .total-score
+            {
+                display: inline-block;   
+                width: 396px;
+                height: 480px;
+                padding: 8px 0 0 0;
+                margin: 0 0 0 0;
+            }
+            .total-page
+            {
+                display: flex;
+            }
+            .total-title
+            {
+                width: 344px;
+                margin: 0px auto;
+            }
+            .total-graph
+            {
+                width: 392px;
+                height: 336px;
+                background-size: 399px 343px;
+                background-position: -2px;
+                background-image: url(/static/images/total2.png);
+                margin: 0 auto;
+            }
+            .total-text
+            {
+                width: 344px;
+                margin: 0 auto;
+            }
+            .by
+            {
+                padding: 4px 0 0 0;
+                font-size: 6px;
+                margin: 0 0 5px 0;
+                color: #444444;
+            }
+            .ul
+            {
+                list-style-type: square;
+            }
+            .blue
+            {
+                color: #0000ff;
+            }
+            .green
+            {
+                color: #008001;
+            }
+            footer
+            {
+                margin: 0 auto;
+                padding: 50px 0 20px 0;
+                text-align: center;
+                font-size: 14px;
+            }
+            .total-evaluation
+            {
+                width: 884px;
+                font-size: 24px;
+                padding: 20px 0 0 20px;
+                line-height: 36px;
+                border-top: 1px solid black;
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            .evaluation-title
+            {
+                font-size: 32px;
+                font-weight: 700;
+            }
+            .evaluation-element
+            {
+                font-size: 30px;
+                font-weight: 700;   
+            }
+            .evaluation-ul
+            {
+                font-size: 24px;
+                font-weight: 400;
+                list-style-type: none;
+            }
+            .data
+            {
+                height: 50px;
+                margin: 100px 0 100px 0;
+                line-height: 50px;
+                font-size: 20px;
+                text-align: center;
+                font-weight: 700;
+                color: #444444;
+                background-color: #f4f4f4;
+            }
+            .evaluation-text
+            {
+                font-size: 48px;
+                color: blue;
+                margin: 30px 0 0 0;
+            }
+            .evaluation-under
+            {
+                font-size: 20px;
+                color: black;
+            }
+        </style>
     </head>
 
 

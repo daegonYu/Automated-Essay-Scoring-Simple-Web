@@ -29,11 +29,7 @@ import os.path
 
 class DocumentBertScoringModel():
     def __init__(self, chunk_model_path,word_doc_model_path,config):
-        # if args is not None:
-        #     self.args = vars(args)
-        # self.bert_tokenizer = BertTokenizer.from_pretrained(self.args['bert_model_path'])       # 토크나이저는 vacob.txt 파일 기준으로
-        # 토크나이저
-        # self.bert_tokenizer = BertTokenizer.from_pretrained('klue/bert-base')
+        
         self.bert_tokenizer = AutoTokenizer.from_pretrained("klue/bert-base")   # transformer = 4.7.0 
 
         # config설정
