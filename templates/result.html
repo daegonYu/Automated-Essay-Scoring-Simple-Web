@@ -71,8 +71,8 @@
             {
                 width: 260px;
                 height: 234px;
-                background-size: 260px 248px;
-                background-position: 2px -12px;
+                background-size: 306px 275px;
+                background-position: -18px -34px;
                 background-repeat: no-repeat;
             }
             .logicality-graph
@@ -97,6 +97,7 @@
                 font-size: 18px;
                 padding: 0 0 4px 20px;
                 margin: 0 20px 0 20px;
+                border: 1px solid black;
                 
             }
             .total-score
@@ -143,11 +144,11 @@
             }
             .blue
             {
-                color: #E3242B;
+                color: #ff0000;
             }
             .green
             {
-                color: #303030;
+                color: #392f31;
             }
             footer
             {
@@ -168,13 +169,14 @@
             }
             .evaluation-title
             {
-                font-size: 32px;
+                font-size: 30px;
                 font-weight: 700;
             }
             .evaluation-element
             {
                 font-size: 30px;
-                font-weight: 700;   
+                font-weight: 700;
+                margin: 10px 0 0 0;   
             }
             .evaluation-ul
             {
@@ -195,14 +197,58 @@
             }
             .evaluation-text
             {
-                font-size: 48px;
+                font-size: 56px;
                 color: blue;
-                margin: 30px 0 0 0;
+                margin: 20px 0 0 0;
             }
             .evaluation-under
             {
+                margin: 14px 0 0 0;
                 font-size: 20px;
                 color: black;
+            }
+            .persent
+            {
+                font-size: 34px;
+                color: blue;
+            }
+            .li
+            {
+                padding: 10px 0 0 0;
+            }
+            .progress
+            {
+                width: 800px;
+                height: 12px;
+                background-color: #f5f5f5;
+                border-radius: 30px;
+            }
+            .bar
+            {
+                height: 11px;
+                background-color: green;
+                border-radius: 30px;
+                margin: -1px 0 0 0;
+            }
+            .logical-bar
+            {
+                background-color: #4298b4;
+                width: 387.2px;
+            }
+            .novelty-bar
+            {
+                background-color: #e4ae3a;
+                width: 271.55px;
+            }
+            .persuasive-bar
+            {
+                background-color: #33a474;
+                width: 176.55px;
+            }
+            .reason-bar
+            {
+                background-color: #886199;
+                width: 271.575px;
             }
         </style>
     </head>
@@ -305,9 +351,9 @@
                             Below Points
                         </div>
                         <ul class="ul">
-                            <li>내 평균 <span class="blue">{{ total_mean[0] }}</span></li>
-                            <li>요소 평균 <span class="green">{{ total_mean[1] }}</span></li>
-                            <li>상위 {{ grade_list[4] }}%</li>
+                            <li>내 평균 <span class="blue">{{ total_mean[0] }}점</span></li>
+                            <li>요소 평균 <span class="green">{{ total_mean[1] }}점</span></li>
+                            <li>상위 <span class="blue">{{ grade_list[4] }}%</span></li>
                         </ul>
                     </div>
                 </div>
@@ -316,7 +362,7 @@
                         당신의 평균 점수는 : 
                     </div>
                     <div class="evaluation-text">
-                        {{ total_mean[0] }}
+                        {{ total_mean[0] }}점
                         <div class="evaluation-under">
                             당신의 에세이는 상위 <span class="persent">{{ grade_list[4] }}%</span>
                             전체적으로 글을 잘 쓰셨습니다.
