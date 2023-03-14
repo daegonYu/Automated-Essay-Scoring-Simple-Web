@@ -102,10 +102,7 @@ def result():
         
         grade_list = [my_logical_grade, my_reason_grade, my_persuasive_grade, my_novelty_grade]     
         grade_list = [round(grade) for grade in grade_list]
-        
-        
-        # my_point_list = list(map(round,my_point_list))
-        
+           
         # 그래프 그리고 저장하기
         
         font_size = 22
