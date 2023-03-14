@@ -6,22 +6,55 @@
         <meta name="description" content="자신의 에세이 글에 대한 3가지 요소를 평가해준다." />
         <meta name="author" content="유대곤" />
         <title>나의 글 평가하기</title>
-        <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <!--<link href="css/styles.css" rel="stylesheet" />-->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+            *
+            {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body
+            {
+                background-color: white;
+            }
+            .wrapper
+            {
+                width: 1280px;
+                margin: 0 auto;
+            }
+            .essay-title
+            {
+                font-size: 30px;
+                font-weight: 700;
+                text-align: center;
+                padding: 40px 0 0 0;
+                margin: 0 0 0 0;
+            }
+            .essay-word
+            {
+                color: blue;
+            }
+        </style>
     </head>
+    <body>
+        <div class="wrapper">
+            <div class="essay-title">
+                Measuring Your <span class="essay-word">Essay </span>Score
+            </div>
+        </div>
+    
 
-
-    <body style = "text-align:center; padding-top:50px">
-        <h2>여기서 아래 3개의 항목에 대한 자신의 에세이 점수를 측정해보아요.</h2>
         <!--
+        <h2>여기서 아래 3개의 항목에 대한 자신의 에세이 점수를 측정해보아요.</h>
+
         <div style="padding-top:5px">
             <h3> 1) 논리성</h3>
             <h3> 2) 참신성</h3>
             <h3> 3) 설득력</h3>
         </div>
-        -->
+        
     
         <form action="/result" method="POST">
             <textarea type="text" name="essay" minlength="1" maxlength="600" placeholder = "최대 500글자 이내로 자신의 글을 작성해보세요!" style="width:100%; height:160px"></textarea>
@@ -34,6 +67,7 @@
                 </div>
             </div>
         </form> 
+        -->
 
         <!-- <div id="result"></div> -->     <!-- result란 id에 값 저장됨-->
         
