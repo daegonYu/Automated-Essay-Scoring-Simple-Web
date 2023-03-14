@@ -97,8 +97,9 @@ def result():
         my_persuasive_grade = (len(persuasive_hub_points_list) - persuasive_hub_points_list.index(persuasive_point)) / len(persuasive_hub_points_list) * 100
         my_novelty_grade = (len(novelty_hub_points_list) - novelty_hub_points_list.index(novelty_point)) / len(novelty_hub_points_list) * 100
         my_total_grade = (len(total_score_per_student) - total_score_per_student.index(my_point_mean)) / len(total_score_per_student) * 100
+        my_total_grade = round(my_total_grade,2)
         
-        grade_list = [my_logical_grade, my_reason_grade, my_persuasive_grade, my_novelty_grade, my_total_grade]     
+        grade_list = [my_logical_grade, my_reason_grade, my_persuasive_grade, my_novelty_grade]     
         grade_list = [round(grade,2) for grade in grade_list]
         
         
@@ -113,7 +114,7 @@ def result():
         pic.total_graph(mean=total_mean, my_points=my_point_list, hub_points=hub_points)
         
         return render_template("result.html", essay=essay, my_points=my_point_list, \
-            hub_points=hub_points, grade_list=grade_list, total_mean=total_mean)
+            hub_points=hub_points, grade_list=grade_list, total_mean=total_mean, my_total_grade=my_total_grade)
     else:
         return render_template("index.html")
 

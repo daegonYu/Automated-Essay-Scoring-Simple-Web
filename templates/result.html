@@ -190,7 +190,7 @@
                 height: 50px;
                 margin: 100px 0 100px 0;
                 line-height: 50px;
-                font-size: 20px;
+                font-size: 17px;
                 text-align: center;
                 font-weight: 700;
                 color: #444444;
@@ -334,7 +334,7 @@
         </div>
         <div class="data">
             <div class="wrapper">
-                The average score sample brought about 14,000 essays from elementary, middle and high schools. Source: AIHUB_essage evaluation data
+                The average score sample brought about 14,000 essays from elementary, middle and high schools. Source: [AIHub] essage evaluation data
             </div>
         </div>
         <div class="wrapper">
@@ -352,7 +352,7 @@
                         <ul class="ul">
                             <li>내 점수 <span class="blue logical-blue">{{total_mean[0]}}점</span></li>
                             <li>평균 <span class="green">{{total_mean[1]}}점</span></li>
-                            <li>상위 {{grade_list[4]}}%</li>
+                            <li>상위 {{my_total_grade}}%</li>
                         </ul>
                     </div>
                 </div>
@@ -363,7 +363,7 @@
                     <div class="evaluation-text">
                         {{total_mean[0]}}점
                         <div class="evaluation-under">
-                            당신의 에세이는 상위<span class="persent"> {{grade_list[4]}}% </span>
+                            당신의 에세이는 상위<span class="persent"> {{my_total_grade}}% </span>
                             전체적으로 글을 잘 쓰셨습니다.
 
                         </div>
@@ -379,7 +379,7 @@
                                 </div>
                             </li>
                             <li class="li reason-li">
-                                풍부한 근거 : {{my_points[1]}}점
+                                근거의 풍부함 : {{my_points[1]}}점
                                 <div class="progress reason-progress">
                                     <div class="bar reason-bar">
                                     </div>
