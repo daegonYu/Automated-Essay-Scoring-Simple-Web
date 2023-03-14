@@ -71,8 +71,8 @@
             {
                 width: 260px;
                 height: 234px;
-                background-size: 306px 275px;
-                background-position: -18px -34px;
+                background-size: 260px 248px;
+                background-position: 2px -12px;
                 background-repeat: no-repeat;
             }
             .logicality-graph
@@ -97,7 +97,6 @@
                 font-size: 18px;
                 padding: 0 0 4px 20px;
                 margin: 0 20px 0 20px;
-                border: 1px solid black;
                 
             }
             .total-score
@@ -123,7 +122,7 @@
                 height: 336px;
                 background-size: 399px 343px;
                 background-position: -2px;
-                background-image: url(/static/images/total2.png);
+                background-image: url(/static/images/total.png);
                 margin: 0 auto;
             }
             .total-text
@@ -144,12 +143,11 @@
             }
             .blue
             {
-                color: #ff0000;
+                color: #E3242B;
             }
             .green
             {
-                color: #392f31;
-
+                color: #303030;
             }
             footer
             {
@@ -170,14 +168,13 @@
             }
             .evaluation-title
             {
-                font-size: 30px;
+                font-size: 32px;
                 font-weight: 700;
             }
             .evaluation-element
             {
                 font-size: 30px;
-                font-weight: 700;
-                margin: 10px 0 0 0;   
+                font-weight: 700;   
             }
             .evaluation-ul
             {
@@ -198,74 +195,25 @@
             }
             .evaluation-text
             {
-                font-size: 56px;
+                font-size: 48px;
                 color: blue;
-                margin: 20px 0 0 0;
+                margin: 30px 0 0 0;
             }
             .evaluation-under
             {
-                margin: 14px 0 0 0;
                 font-size: 20px;
                 color: black;
             }
-            .persent
-            {
-                font-size: 34px;
-                color: blue;
-            }
-            .li
-            {
-                padding: 10px 0 0 0;
-            }
-            .progress
-            {
-                width: 800px;
-                height: 12px;
-                background-color: #f5f5f5;
-                border-radius: 30px;
-            }
-            .bar
-            {
-                height: 11px;
-                background-color: green;
-                border-radius: 30px;
-                margin: -1px 0 0 0;
-            }
-            .logical-bar
-            {
-                background-color: #4298b4;
-                width: 387.2px;
-            }
-            .novelty-bar
-            {
-                background-color: #e4ae3a;
-                width: 271.55px;
-            }
-            .persuasive-bar
-            {
-                background-color: #33a474;
-                width: 176.55px;
-            }
-            .reason-bar
-            {
-                background-color: #886199;
-                width: 271.575px;
-            }
         </style>
     </head>
+
     <body>
         <div class="wrapper">
             <div class="essay-title">
                 Checking the results of my <span class="essay-word">essay</span>
             </div>
             <div class="essay-content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. A cum saepe fugit, doloremque explicabo delectus quas quaerat laudantium. Dolorem soluta vel qui beatae asperiores, nobis fugiat quisquam ea dolorum tempora?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, et nisi! Ad maiores accusamus placeat, eum modi dolorem numquam commodi. Aliquam cumque temporibus eligendi rem? Iusto quos eius quidem natus.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse vel atque sunt fuga magnam doloremque exercitationem? Laudantium illum blanditiis laboriosam neque vel, minima voluptas quam reprehenderit nostrum, id laborum quaerat?
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus in ipsam tempora culpa, quis hic nesciunt odio! Cupiditate accusantium aliquam rem facere perferendis nesciunt voluptate harum, cum numquam ex cumque!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo doloribus, aperiam dignissimos distinctio iste inventore maxime debitis voluptates accusantium nam dolores sequi neque. Dolorem dicta atque obcaecati exercitationem soluta amet.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi ipsa cupiditate voluptatem accusantium doloribus repudiandae velit, veritatis excepturi incidunt officia omnis ducimus, atque dicta sunt fugiat vel vitae doloremque in.
-
+                {{ essay }} 
             </div>
             <div class="result-container">
                 <div class="result-content">
@@ -273,6 +221,24 @@
                         논리성
                     </div>
                     <div class="logicality-graph result-graph">
+                    </div>
+                    <div class="result-text">
+                        <div class="by">
+                            Below Points
+                        </div>
+                        <ul class="ul">
+                            <li>내 점수 <span class="blue">{{ my_points[0] }}점</span></li>
+                            <li>평균점수<span class="green">{{ hub_points[0] }}점</span></li>
+                            <li>상위 {{ grade_list[0] }}%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="result-content">
+                    <div class="result-title">
+                        근거의 풍부함
+                    </div>
+                    <div class="basis-graph result-graph">
                     </div>
                     <div class="result-text">
                         <div class="by">
@@ -287,23 +253,6 @@
                 </div>
                 <div class="result-content">
                     <div class="result-title">
-                        참신성
-                    </div>
-                    <div class="novelty-graph result-graph">
-                    </div>
-                    <div class="result-text">
-                        <div class="by">
-                            Below Points
-                        </div>
-                        <ul class="ul">
-                            <li>내 점수 <span class="blue novelty-blue">54.31</span>점</li>
-                            <li>평균 <span class="green">50.98점</span></li>
-                            <li>상위 73%</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="result-content">
-                    <div class="result-title">
                         설득력
                     </div>
                     <div class="persuasivePower-graph result-graph">
@@ -313,26 +262,26 @@
                             Below Points
                         </div>
                         <ul class="ul">
-                            <li>내 점수 <span class="blue persuasive-blue">35.31</span>점</li>
-                            <li>평균 <span class="green">53.02점</span></li>
-                            <li>상위 73%</li>
+                            <li>내 점수 <span class="blue">{{ my_points[2] }}점</span></li>
+                            <li>평균 점수 <span class="green">{{ hub_points[2] }}점</span></li>
+                            <li>상위 {{ grade_list[2] }}%</li>
                         </ul>
                     </div>
                 </div>
                 <div class="result-content">
                     <div class="result-title">
-                        근거의 풍부함
+                        참신성
                     </div>
-                    <div class="basis-graph result-graph">
+                    <div class="novelty-graph result-graph">
                     </div>
                     <div class="result-text">
                         <div class="by">
                             Below Points
                         </div>
                         <ul class="ul">
-                            <li>내 점수 <span class="blue reason-blue">64.18</span>점</li>
-                            <li>평균 <span class="green">59.04점</span></li>
-                            <li>상위 73%</li>
+                            <li>내 점수 <span class="blue">{{ my_points[3] }}점</span></li>
+                            <li>평균 점수 <span class="green">{{ hub_points[3] }}점</span></li>
+                            <li>상위 {{ grade_list[3] }}%</li>
                         </ul>
                     </div>
                 </div>
@@ -340,7 +289,7 @@
         </div>
         <div class="data">
             <div class="wrapper">
-                The average score sample brought about 14,000 essays from elementary, middle and high schools. Source: AIHUB_essage evaluation data
+                Your overall score in the graph below, as well as your score rating.
             </div>
         </div>
         <div class="wrapper">
@@ -356,20 +305,20 @@
                             Below Points
                         </div>
                         <ul class="ul">
-                            <li>내 점수 <span class="blue">55.31점</span></li>
-                            <li>평균 <span class="green">54.58점</span></li>
-                            <li>상위 98%</li>
+                            <li>내 평균 <span class="blue">{{ total_mean[0] }}</span></li>
+                            <li>요소 평균 <span class="green">{{ total_mean[1] }}</span></li>
+                            <li>상위 {{ grade_list[4] }}%</li>
                         </ul>
                     </div>
                 </div>
                 <div class="total-evaluation">
                     <div class="evaluation-title">
-                        당신의 점수는 : 
+                        당신의 평균 점수는 : 
                     </div>
                     <div class="evaluation-text">
-                        55.31점
+                        {{ total_mean[0] }}
                         <div class="evaluation-under">
-                            당신의 에세이는 상위<span class="persent"> 98% </span>
+                            당신의 에세이는 상위 <span class="persent">{{ grade_list[4] }}%</span>
                             전체적으로 글을 잘 쓰셨습니다.
 
                         </div>
@@ -378,26 +327,26 @@
                         요소별 평가
                         <ul class="evaluation-ul">
                             <li class="li logical-li">
-                                논리성 : 77.44점
+                                논리성 : {{ my_points[0] }}
                                 <div class="progress logical-progress">
                                     <div class="bar logical-bar">
                                     </div>
                                 </div>
                             </li>
                             <li class="li novelty-li">
-                                참신성 : 54.18점
+                                풍부한 근거 : {{ my_points[1] }}
                                 <div class="progress novelty-progress">
                                     <div class="bar novelty-bar">
                                     </div>
                             </li>
                             <li class="li persuasive-li">
-                                설득력 : 35.31점
+                                설득력 : {{ my_points[2] }}
                                 <div class="progress persuasive-progress">
                                     <div class="bar persuasive-bar">
                                     </div>
                             </li>
                             <li class="li reason-li">
-                                풍부한 근거 : 54.31점
+                                참신성 : {{ my_points[3] }}
                                 <div class="progress reason-progress">
                                     <div class="bar reason-bar">
                                     </div>
@@ -425,8 +374,6 @@
             let reasonBlue = document.querySelector(".reason-blue");
             let reasonBlueInnerHTML;
 
-            console.log(logicalBlue.innerHTML);
-
             function barMove (event) {
                 logicalBlueInnerHTML = logicalBlue.innerHTML;
                 noveltyBlueInnerHTML = noveltyBlue.innerHTML;
@@ -452,6 +399,7 @@
             }
     
             barMove();
+    
         </script>
     </body>
 </html>
