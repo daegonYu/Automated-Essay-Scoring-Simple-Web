@@ -34,10 +34,10 @@ def total_graph(mean,my_points, hub_points):
     ## 데이터 준비
     df = pd.DataFrame({
     'Character': ['My Points','Other students'],
-    'Mean point': [mean[0], mean[1]],
+    'Mean Point': [mean[0], mean[1]],
     'Logicality': [my_points[0], hub_points[0]],
-    'Reasonable': [my_points[1], hub_points[1]],
-    'Persuative': [my_points[2], hub_points[2]],
+    'Abundant Evidence': [my_points[1], hub_points[1]],
+    'Persuative Power': [my_points[2], hub_points[2]],
     'Novelty': [my_points[3], hub_points[3]]
     })
     labels = df.columns[1:]
