@@ -149,6 +149,7 @@
             .green
             {
                 color: #392f31;
+
             }
             footer
             {
@@ -252,14 +253,13 @@
             }
         </style>
     </head>
-
     <body>
         <div class="wrapper">
             <div class="essay-title">
                 Checking the results of my <span class="essay-word">essay</span>
             </div>
             <div class="essay-content">
-                {{ essay }} 
+                {{ essay }}
             </div>
             <div class="result-container">
                 <div class="result-content">
@@ -273,13 +273,12 @@
                             Below Points
                         </div>
                         <ul class="ul">
-                            <li>내 점수 <span class="blue">{{ my_points[0] }}점</span></li>
-                            <li>평균 점수 <span class="green">{{ hub_points[0] }}점</span></li>
+                            <li>내 점수 <span class="blue logical-blue">{{ my_points[0] }}</span>점</li>
+                            <li>평균점수<span class="green">{{ hub_points[0] }}점</span></li>
                             <li>상위 {{ grade_list[0] }}%</li>
                         </ul>
                     </div>
                 </div>
-
                 <div class="result-content">
                     <div class="result-title">
                         근거의 풍부함
@@ -291,8 +290,8 @@
                             Below Points
                         </div>
                         <ul class="ul">
-                            <li>내 점수 <span class="blue">{{ my_points[1] }}점</span></li>
-                            <li>평균 점수 <span class="green">{{ hub_points[1] }}점</span></li>
+                            <li>내 점수 <span class="blue reason-blue">{{ my_points[1] }}</span>점</li>
+                            <li>평균 점수 <span class="green">{{ hub_points[1] }}</span>점</li>
                             <li>상위 {{ grade_list[1] }}%</li>
                         </ul>
                     </div>
@@ -308,8 +307,8 @@
                             Below Points
                         </div>
                         <ul class="ul">
-                            <li>내 점수 <span class="blue">{{ my_points[2] }}점</span></li>
-                            <li>평균 점수 <span class="green">{{ hub_points[2] }}점</span></li>
+                            <li>내 점수 <span class="blue persuasive-blue">{{ my_points[2] }}</span>점</li>
+                            <li>평균 점수 <span class="green">{{ hub_points[2] }}</span>점</li>
                             <li>상위 {{ grade_list[2] }}%</li>
                         </ul>
                     </div>
@@ -325,8 +324,8 @@
                             Below Points
                         </div>
                         <ul class="ul">
-                            <li>내 점수 <span class="blue">{{ my_points[3] }}점</span></li>
-                            <li>평균 점수 <span class="green">{{ hub_points[3] }}점</span></li>
+                            <li>내 점수 <span class="blue novelty-blue">{{ my_points[3] }}</span>점</li>
+                            <li>평균 점수 <span class="green">{{ hub_points[3] }}</span>점</li>
                             <li>상위 {{ grade_list[3] }}%</li>
                         </ul>
                     </div>
@@ -335,7 +334,7 @@
         </div>
         <div class="data">
             <div class="wrapper">
-                Your overall score in the graph below, as well as your score rating.
+                The average score sample brought about 14,000 essays from elementary, middle and high schools. Source: AIHUB_essage evaluation data
             </div>
         </div>
         <div class="wrapper">
@@ -351,20 +350,20 @@
                             Below Points
                         </div>
                         <ul class="ul">
-                            <li>내 평균 <span class="blue">{{ total_mean[0] }}점</span></li>
-                            <li>요소 평균 <span class="green">{{ total_mean[1] }}점</span></li>
-                            <li>상위 <span class="blue">{{ grade_list[4] }}%</span></li>
+                            <li>내 점수 <span class="blue logical-blue">{{total_mean[0]}}점</span></li>
+                            <li>평균 <span class="green">{{total_mean[1]}}점</span></li>
+                            <li>상위 {{grade_list[4]}}%</li>
                         </ul>
                     </div>
                 </div>
                 <div class="total-evaluation">
                     <div class="evaluation-title">
-                        당신의 평균 점수는 : 
+                        당신의 점수는 : 
                     </div>
                     <div class="evaluation-text">
-                        {{ total_mean[0] }}점
+                        {{total_mean[0]}}점
                         <div class="evaluation-under">
-                            당신의 에세이는 상위 <span class="persent">{{ grade_list[4] }}%</span>
+                            당신의 에세이는 상위<span class="persent"> {{grade_list[4]}}% </span>
                             전체적으로 글을 잘 쓰셨습니다.
 
                         </div>
@@ -373,28 +372,28 @@
                         요소별 평가
                         <ul class="evaluation-ul">
                             <li class="li logical-li">
-                                논리성 : {{ my_points[0] }}
+                                논리성 : {{my_points[0]}}점
                                 <div class="progress logical-progress">
                                     <div class="bar logical-bar">
                                     </div>
                                 </div>
                             </li>
-                            <li class="li novelty-li">
-                                풍부한 근거 : {{ my_points[1] }}
-                                <div class="progress novelty-progress">
-                                    <div class="bar novelty-bar">
+                            <li class="li reason-li">
+                                풍부한 근거 : {{my_points[1]}}점
+                                <div class="progress reason-progress">
+                                    <div class="bar reason-bar">
                                     </div>
                             </li>
                             <li class="li persuasive-li">
-                                설득력 : {{ my_points[2] }}
+                                설득력 : {{my_points[2]}}점
                                 <div class="progress persuasive-progress">
                                     <div class="bar persuasive-bar">
                                     </div>
                             </li>
-                            <li class="li reason-li">
-                                참신성 : {{ my_points[3] }}
-                                <div class="progress reason-progress">
-                                    <div class="bar reason-bar">
+                            <li class="li novelty-li">
+                                참신성 : {{my_points[3]}}점
+                                <div class="progress novelty-progress">
+                                    <div class="bar novelty-bar">
                                     </div>
                             </li>
                         </ul>
@@ -419,6 +418,9 @@
             let reasonBarPersent = document.querySelector(".reason-bar");
             let reasonBlue = document.querySelector(".reason-blue");
             let reasonBlueInnerHTML;
+
+            console.log(logicalBlue.innerHTML);
+            console.log(noveltyBlue.innerHTML);
 
             function barMove (event) {
                 logicalBlueInnerHTML = logicalBlue.innerHTML;
@@ -445,8 +447,6 @@
             }
     
             barMove();
-    
         </script>
     </body>
 </html>
-
