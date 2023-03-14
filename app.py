@@ -92,25 +92,28 @@ def result():
         
         logical_hub_points_list.sort(); reason_hub_points_list.sort(); persuasive_hub_points_list.sort(); novelty_hub_points_list.sort(); total_score_per_student.sort()
         
+        # 순위 계산할 때는 round()가 적용되면 안되고 순위계산 후 보여줄 때 round()가 계산되어야 한다.
         my_logical_grade = (len(logical_hub_points_list) - logical_hub_points_list.index(logical_point)) / len(logical_hub_points_list) * 100
         my_reason_grade = (len(reason_hub_points_list) - reason_hub_points_list.index(reason_point)) / len(reason_hub_points_list) * 100
         my_persuasive_grade = (len(persuasive_hub_points_list) - persuasive_hub_points_list.index(persuasive_point)) / len(persuasive_hub_points_list) * 100
         my_novelty_grade = (len(novelty_hub_points_list) - novelty_hub_points_list.index(novelty_point)) / len(novelty_hub_points_list) * 100
         my_total_grade = (len(total_score_per_student) - total_score_per_student.index(my_point_mean)) / len(total_score_per_student) * 100
-        my_total_grade = round(my_total_grade,2)
+        my_total_grade = round(my_total_grade)
         
         grade_list = [my_logical_grade, my_reason_grade, my_persuasive_grade, my_novelty_grade]     
-        grade_list = [round(grade,2) for grade in grade_list]
+        grade_list = [round(grade) for grade in grade_list]
         
+        
+        # my_point_list = list(map(round,my_point_list))
         
         # 그래프 그리고 저장하기
         
         font_size = 22
         
-        pic.graph(mode='logical', essay_point=logical_point, mean=logical_mean, font_size=font_size)
-        pic.graph(mode='reason', essay_point=reason_point, mean=reason_mean, font_size=font_size)
-        pic.graph(mode='persuasive', essay_point=persuasive_point, mean=persuasive_mean, font_size=font_size)
-        pic.graph(mode='novelty', essay_point=novelty_point, mean=novelty_mean, font_size=font_size)
+        pic.graph(mode='logical', essay_point=my_point_list[0], mean=logical_mean, font_size=font_size)
+        pic.graph(mode='reason', essay_point=my_point_list[1], mean=reason_mean, font_size=font_size)
+        pic.graph(mode='persuasive', essay_point=my_point_list[2], mean=persuasive_mean, font_size=font_size)
+        pic.graph(mode='novelty', essay_point=my_point_list[3], mean=novelty_mean, font_size=font_size)
         pic.total_graph(mean=total_mean, my_points=my_point_list, hub_points=hub_points)
         
         return render_template("result.html", essay=essay, my_points=my_point_list, \
