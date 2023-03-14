@@ -228,7 +228,7 @@
                         </div>
                         <ul class="ul">
                             <li>내 점수 <span class="blue">{{ my_points[0] }}점</span></li>
-                            <li>점수표본평균 <span class="green">{{ hub_points[0] }}점</span></li>
+                            <li>평균 점수 <span class="green">{{ hub_points[0] }}점</span></li>
                             <li>상위 {{ grade_list[0] }}%</li>
                         </ul>
                     </div>
@@ -246,7 +246,7 @@
                         </div>
                         <ul class="ul">
                             <li>내 점수 <span class="blue">{{ my_points[1] }}점</span></li>
-                            <li>점수표본평균 <span class="green">{{ hub_points[1] }}점</span></li>
+                            <li>평균 점수 <span class="green">{{ hub_points[1] }}점</span></li>
                             <li>상위 {{ grade_list[1] }}%</li>
                         </ul>
                     </div>
@@ -263,7 +263,7 @@
                         </div>
                         <ul class="ul">
                             <li>내 점수 <span class="blue">{{ my_points[2] }}점</span></li>
-                            <li>점수표본평균 <span class="green">{{ hub_points[2] }}점</span></li>
+                            <li>평균 점수 <span class="green">{{ hub_points[2] }}점</span></li>
                             <li>상위 {{ grade_list[2] }}%</li>
                         </ul>
                     </div>
@@ -280,7 +280,7 @@
                         </div>
                         <ul class="ul">
                             <li>내 점수 <span class="blue">{{ my_points[3] }}점</span></li>
-                            <li>점수표본평균 <span class="green">{{ hub_points[3] }}점</span></li>
+                            <li>평균 점수 <span class="green">{{ hub_points[3] }}점</span></li>
                             <li>상위 {{ grade_list[3] }}%</li>
                         </ul>
                     </div>
@@ -300,16 +300,25 @@
                     </div>
                     <div class="total-graph result-graph">
                     </div>
-                    
+                    <div class="total-text result-text">
+                        <div class="by">
+                            Below Points
+                        </div>
+                        <ul class="ul">
+                            <li>내 평균 <span class="blue">{{ total_mean[0] }}</span></li>
+                            <li>요소 평균 <span class="green">{{ total_mean[1] }}</span></li>
+                            <li>상위 {{ grade_list[4] }}%</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="total-evaluation">
                     <div class="evaluation-title">
                         당신의 평균 점수는 : 
                     </div>
                     <div class="evaluation-text">
-                        {{ total_mean[0] }}점
+                        {{ total_mean[0] }}
                         <div class="evaluation-under">
-                            
+                            당신의 에세이는 상위 <span class="persent">{{ grade_list[4] }}%</span>
                             전체적으로 글을 잘 쓰셨습니다.
 
                         </div>
@@ -317,30 +326,81 @@
                     <div class="evaluation-element">
                         요소별 평가
                         <ul class="evaluation-ul">
-                            <li>
-                                논리성 : 
+                            <li class="li logical-li">
+                                논리성 : {{ my_points[0] }}
+                                <div class="progress logical-progress">
+                                    <div class="bar logical-bar">
+                                    </div>
+                                </div>
                             </li>
-                            <li>
-                                풍부한 근거 :
+                            <li class="li novelty-li">
+                                풍부한 근거 : {{ my_points[1] }}
+                                <div class="progress novelty-progress">
+                                    <div class="bar novelty-bar">
+                                    </div>
                             </li>
-                            <li>
-                                설득력 :
+                            <li class="li persuasive-li">
+                                설득력 : {{ my_points[2] }}
+                                <div class="progress persuasive-progress">
+                                    <div class="bar persuasive-bar">
+                                    </div>
                             </li>
-                            <li>
-                                참신성 :
+                            <li class="li reason-li">
+                                참신성 : {{ my_points[3] }}
+                                <div class="progress reason-progress">
+                                    <div class="bar reason-bar">
+                                    </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="wrapper">
-            위 점수의 표본은 초중고 에세이 약 1만4천개를 가져왔습니다.<br>
-            출처 : AIHub_에세이 글 평가 데이터 
-        </div>
+
         <footer>
                 Made by AI Model : DaegonYu     |       Web Page : IlhanYu
         </footer>
+        <script>
+            let logicalBarPersent = document.querySelector(".logical-bar");
+            let logicalBlue = document.querySelector(".logical-blue");
+            let logicalBlueInnerHTML;
+            let noveltyBarPersent = document.querySelector(".novelty-bar");
+            let noveltyBlue = document.querySelector(".novelty-blue");
+            let noveltyBlueInnerHTML;
+            let persuasiveBarPersent = document.querySelector(".persuasive-bar");
+            let persuasiveBlue = document.querySelector(".persuasive-blue");
+            let persuasiveBlueInnerHTML;
+            let reasonBarPersent = document.querySelector(".reason-bar");
+            let reasonBlue = document.querySelector(".reason-blue");
+            let reasonBlueInnerHTML;
+
+            function barMove (event) {
+                logicalBlueInnerHTML = logicalBlue.innerHTML;
+                noveltyBlueInnerHTML = noveltyBlue.innerHTML;
+                persuasiveBlueInnerHTML = persuasiveBlue.innerHTML;
+                reasonBlueInnerHTML = reasonBlue.innerHTML;
+
+                for(let i = 0; i <= logicalBlueInnerHTML * 8; i++) {
+                    console.log(logicalBlueInnerHTML);
+                    logicalBarPersent.style.width = `${i}px`; 
+                }
+                for(let i = 0; i <= noveltyBlueInnerHTML * 8; i++) {
+                    console.log(noveltyBlueInnerHTML);
+                    noveltyBarPersent.style.width = `${i}px`; 
+                }
+                for(let i = 0; i <= persuasiveBlueInnerHTML * 8; i++) {
+                    console.log(persuasiveBlueInnerHTML);
+                    persuasiveBarPersent.style.width = `${i}px`; 
+                }
+                for(let i = 0; i <=  reasonBlueInnerHTML * 8; i++) {
+                    console.log(reasonBlueInnerHTML);
+                    reasonBarPersent.style.width = `${i}px`; 
+                }
+            }
+    
+            barMove();
+    
+        </script>
     </body>
 </html>
 

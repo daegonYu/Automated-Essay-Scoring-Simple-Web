@@ -40,6 +40,10 @@ reason_mean = round(float(reason_mean),2)
 persuasive_mean = round(float(persuasive_mean),2)
 novelty_mean = round(float(novelty_mean),2)
 
+total_score_per_student = logical_hub_points+reason_hub_points+persuasive_hub_points+novelty_hub_points
+total_score_per_student /= 4        # 평균
+total_score_per_student = np.round(total_score_per_student, 2)  # 반올림
+
 hub_points = [logical_mean, reason_mean, persuasive_mean, novelty_mean]
 hub_mean = round(sum(hub_points) / len(hub_points),2)
 
@@ -48,7 +52,7 @@ logical_hub_points_list = list(logical_hub_points)
 reason_hub_points_list = list(reason_hub_points)
 persuasive_hub_points_list = list(persuasive_hub_points)
 novelty_hub_points_list = list(novelty_hub_points)
-
+total_score_per_student = list(total_score_per_student)
 
 # title_font = {        # plt
 #     'fontsize': 16,
@@ -74,9 +78,9 @@ def result():
         persuasive_point = persuasive_model.result_point(input_sentence, mode_='persuasive')
         novelty_point = novelty_model.result_point(input_sentence, mode_='novelty')
         
-        total_point = logical_point + reason_point + persuasive_point + novelty_point
-        point_list = [logical_point, reason_point, persuasive_point, novelty_point]
-        my_point_mean = round(sum(point_list) / len(point_list),2)
+        
+        my_point_list = [logical_point, reason_point, persuasive_point, novelty_point]
+        my_point_mean = round(sum(my_point_list) / len(my_point_list),2)
         total_mean = my_point_mean, hub_mean
         # 점수가 다른 학생들과 비교하여 상위 몇 % 인지 계산
         
@@ -84,16 +88,17 @@ def result():
         reason_hub_points_list.append(reason_point)
         persuasive_hub_points_list.append(persuasive_point)
         novelty_hub_points_list.append(novelty_point)
+        total_score_per_student.append(my_point_mean)
         
-        logical_hub_points_list.sort(); reason_hub_points_list.sort(); persuasive_hub_points_list.sort(); novelty_hub_points_list.sort()
+        logical_hub_points_list.sort(); reason_hub_points_list.sort(); persuasive_hub_points_list.sort(); novelty_hub_points_list.sort(); total_score_per_student.sort()
         
         my_logical_grade = (len(logical_hub_points_list) - logical_hub_points_list.index(logical_point)) / len(logical_hub_points_list) * 100
         my_reason_grade = (len(reason_hub_points_list) - reason_hub_points_list.index(reason_point)) / len(reason_hub_points_list) * 100
         my_persuasive_grade = (len(persuasive_hub_points_list) - persuasive_hub_points_list.index(persuasive_point)) / len(persuasive_hub_points_list) * 100
         my_novelty_grade = (len(novelty_hub_points_list) - novelty_hub_points_list.index(novelty_point)) / len(novelty_hub_points_list) * 100
+        my_total_grade = (len(total_score_per_student) - total_score_per_student.index(my_point_mean)) / len(total_score_per_student) * 100
         
-        grade_list = [my_logical_grade, my_reason_grade, my_persuasive_grade, my_novelty_grade]     
-        my_grade_mean = round(sum(grade_list) / len(grade_list),2)
+        grade_list = [my_logical_grade, my_reason_grade, my_persuasive_grade, my_novelty_grade, my_total_grade]     
         grade_list = [round(grade,2) for grade in grade_list]
         
         
@@ -105,9 +110,9 @@ def result():
         pic.graph(mode='reason', essay_point=reason_point, mean=reason_mean, font_size=font_size)
         pic.graph(mode='persuasive', essay_point=persuasive_point, mean=persuasive_mean, font_size=font_size)
         pic.graph(mode='novelty', essay_point=novelty_point, mean=novelty_mean, font_size=font_size)
-        pic.total_graph(mean=total_mean, my_points=point_list, hub_points=hub_points)
+        pic.total_graph(mean=total_mean, my_points=my_point_list, hub_points=hub_points)
         
-        return render_template("result.html", essay=essay, my_points=point_list, \
+        return render_template("result.html", essay=essay, my_points=my_point_list, \
             hub_points=hub_points, grade_list=grade_list, total_mean=total_mean)
     else:
         return render_template("index.html")

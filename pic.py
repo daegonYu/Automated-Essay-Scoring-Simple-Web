@@ -13,7 +13,7 @@ def graph(mode, essay_point, mean, font_size):
     
     points = [essay_point, mean]    
     x = np.arange(2)
-    names = ['My point', 'Another student']
+    names = ['My point', 'Other students']
     plt.xticks(x,names, fontsize = font_size)
     plt.bar(x, points, color=[my_palette(0),my_palette(1)])
     plt.ylim(max(min(points)-25,0), max(points)+10)
@@ -33,7 +33,7 @@ def graph(mode, essay_point, mean, font_size):
 def total_graph(mean,my_points, hub_points):
     ## 데이터 준비
     df = pd.DataFrame({
-    'Character': ['My Points','Another students'],
+    'Character': ['My Points','Other students'],
     'Mean point': [mean[0], mean[1]],
     'Logicality': [my_points[0], hub_points[0]],
     'Reasonable': [my_points[1], hub_points[1]],
