@@ -9,7 +9,7 @@ import pic
 app = Flask(__name__)
 
 # 모델 불러오기
-config_ = 'models/logical_finished_chunk_model.bin1/config.json'    # config는 모두 같다.
+config_ = 'models/chunk_model.bin10/config.json'    # config는 모두 같다.
 
 chunk_model_path = 'models/chunk_model.bin10'; word_doc_model_path = 'models/word_doc_model.bin10' 
 logical_model = DocumentBertScoringModel(chunk_model_path=chunk_model_path, word_doc_model_path=word_doc_model_path, config=config_)
@@ -130,7 +130,7 @@ def result():
            
         # 그래프 그리고 저장하기
         
-        font_size = 22
+        font_size = 24
         
         pic.graph(mode='logical', essay_point=my_point_list[0], mean=logical_mean, font_size=font_size)
         pic.graph(mode='reason', essay_point=my_point_list[1], mean=reason_mean, font_size=font_size)
