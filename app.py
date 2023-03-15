@@ -82,6 +82,31 @@ def result():
         my_point_list = [logical_point, reason_point, persuasive_point, novelty_point]
         my_point_mean = round(sum(my_point_list) / len(my_point_list),2)
         total_mean = my_point_mean, hub_mean
+        
+        np_my_points = np.array(my_point_list)
+        np_hub_points = np.array(hub_points)
+        
+        # boolean
+        np_my_class = np_my_points > np_hub_points        # 내 점수가 더 높다면 True
+        list_my_class =list(np_my_class)
+        
+        # list_my_clss[4] == True    -->  모든 요소에서 나의 점수가 평균보다 높다.
+        if list_my_class.count(False) == 0:
+            list_my_class.append(True)
+        else:
+            list_my_class.append(False)
+        
+        dic_my_class = {
+            "논리성" : np_my_class[0],      # boolean
+            "근거의 풍부함" : np_my_class[1],
+            "설득력" : np_my_class[2],
+            "참신성" : np_my_class[3],
+        }
+        my_class = dic_my_class, list_my_class[4]
+        
+        np_elements = np.array(list(dic_my_class.keys()))
+        big_small_element = np_elements[[np.argmax(np_my_points), np.argmin(np_my_points)]]
+        
         # 점수가 다른 학생들과 비교하여 상위 몇 % 인지 계산
         
         logical_hub_points_list.append(logical_point)
@@ -114,7 +139,8 @@ def result():
         pic.total_graph(mean=total_mean, my_points=my_point_list, hub_points=hub_points)
         
         return render_template("result.html", essay=essay, my_points=my_point_list, \
-            hub_points=hub_points, grade_list=grade_list, total_mean=total_mean, my_total_grade=my_total_grade)
+            hub_points=hub_points, grade_list=grade_list, total_mean=total_mean, my_total_grade=my_total_grade,\
+                my_class = my_class, big_small_element=big_small_element)
     else:
         return render_template("index.html")
 

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="자신의 에세이 글에 대한 3가지 요소를 평가해준다." />
+        <meta name="description" content="자신의 에세이 글에 대한 4가지 요소를 평가해준다." />
         <meta name="author" content="유대곤" />
         <title>나의 글 평가하기</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -26,6 +26,11 @@
             {
                 width: 1280px;
                 margin: 0 auto;
+            }
+            .wrapper2
+            {
+                width: 1280px;
+                margin: 27px auto;
             }
             .essay-title
             {
@@ -51,7 +56,7 @@
             {
                 display: flex;
                 justify-content: space-around;
-                margin: 54px 0 0 0;
+                margin: 30px 0 0 0;
 
             }
             .result-content
@@ -62,7 +67,23 @@
                 border: 1px solid black;
                 outline : 1px solid black;
             }
+            .result-content2
+            {
+                width: 280px;
+                height: 190px; 
+                margin: 0 0;
+                outline : 2px solid steelblue;
+            }
             .result-title
+            {
+                text-align: center;
+                font-size: 24px;
+                font-weight: 700;
+                padding: 0 0 0 0;
+                margin: 8px 20px 0 20px;
+                border: 1px solid black;
+            }
+            .result-title2
             {
                 text-align: center;
                 font-size: 24px;
@@ -125,8 +146,8 @@
             {
                 width: 392px;
                 height: 336px;
-                background-size: 399px 343px;
-                background-position: -2px;
+                background-size: 400px 354px;
+                background-position: -13px;
                 background-image: url(/static/images/total.png);
                 margin: 0 auto;
             }
@@ -158,23 +179,34 @@
             .big-red
             {
                 color: #ff0000;
-                font-size: 40px;
+                font-size: 35px;
             }
             footer
             {
                 margin: 0 auto;
-                padding: 50px 0 20px 0;
+                padding: 0 0 20px 0;
                 text-align: center;
                 font-size: 14px;
+                border-top: 1px solid darkgray;
             }
             .total-evaluation
+            {
+                width: 884px;
+                font-size: 24px;
+                padding: 10px 0 0 30px;
+                line-height: 36px;
+                border-top: 1px solid black;
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            .evaluation-basis
             {
                 width: 884px;
                 font-size: 24px;
                 padding: 20px 0 0 20px;
                 line-height: 36px;
                 border-top: 1px solid black;
-                border-right: 1px solid black;
+                
                 border-bottom: 1px solid black;
             }
             .evaluation-title
@@ -260,6 +292,26 @@
                 background-color: #886199;
                 width: 271.575px;
             }
+            .pointer {
+                cursor: pointer;
+                text-decoration : underline;
+                color: #0066FF;
+              }
+            .highlight-text{
+                background-color:yellow;
+                font-weight: bold;
+            }
+            .result-text2
+            {
+                text-align: center;
+                font-size: 16px;
+                padding: 0 0 0 0;
+                margin: 12px 20px 0 20px;
+            }
+            .last-bottom-padding
+            {
+                padding: 0px 50px 50px 20px;
+            }
         </style>
     </head>
     <body>
@@ -343,7 +395,7 @@
         </div>
         <div class="data">
             <div class="wrapper">
-                The average score sample brought about 14,000 essays from elementary, middle and high schools. Source: [AIHub] essage evaluation data
+                The average score sample brought about 14,000 essays from elementary, middle and high schools. Source: [AIHub] Essage Evaluation Data
             </div>
         </div>
         <div class="wrapper">
@@ -372,8 +424,11 @@
                     <div class="evaluation-text">
                         {{total_mean[0]}}점
                         <div class="evaluation-under">
-                            당신의 에세이는 상위<span class="persent"> {{my_total_grade}}% </span>
-                            전체적으로 당신의 글은  
+                            당신의 에세이는 상위 <span class="persent">{{my_total_grade}}% </span>입니다. <br>
+                            <span class="big-red">{{big_small_element[0]}}</span>은 적절하지만 
+                            <span class="big-red">{{big_small_element[1]}}</span> 은 부족한 글입니다.
+                            
+                            <!--
                             {% if my_total_grade < 36 %}
                                 <span class="big-red">상</span>
                             {% elif my_total_grade < 71 %}
@@ -381,7 +436,7 @@
                             {% else %}
                                 <span class="big-red">하</span>
                             {% endif %}
-                            입니다.
+                            입니다.-->
                         </div>
                     </div>
                     <div class="evaluation-element">
@@ -417,10 +472,121 @@
                 </div>
             </div>
         </div>
-
+        <div class="wrapper2"> 
+            <h1>AI가 알려주는 4가지 요소에 대한 당신의 글 특징! </h1>
+            <h2>당신의 글은 .. </h2>
+            <div class="result-container">
+                <div class="result-content2">
+                    <div class="result-title2">
+                        논리성
+                    </div>
+                    <div class="result-text2">
+                        {% if my_points[0] < 21 %}
+                        글에 일부 논리적인 오류가 있으며, 그 결과 글이 애매하게 느껴집니다.
+                        {% elif my_points[0] < 41 %}
+                        글의 전반적인 논리가 약해 보이며, 글의 구성이나 주장에 일관성이 부족합니다.
+                        {% elif my_points[0] < hub_points[0] %}
+                        글의 논리적 구성이 일정한 수준을 유지하지만, 일부 부분에서 애매한 점이 있거나 부족한 설명이 있습니다.
+                        {% elif my_points[0] < 81 %}
+                        <span class="highlight-text">글의 논리적 구성이 대체로 탄탄하며, 주장이 일관성 있게 전개되고 주장에 대한 설명이 충분합니다.</span>
+                        {% else %}
+                        <span class="highlight-text">글의 논리적 구성이 매우 훌륭하며, 주장이 일관성 있게 전개되고 적절한 논거와 설명이 제공되어 논리적으로 타당합니다.</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="result-content2">
+                    <div class="result-title2">
+                        근거의 풍부함
+                    </div>
+                    <div class="result-text2">
+                        {% if my_points[1] < 21 %}
+                        주장과 전혀 관련이 없는 근거가 제시되었거나, 주장과 상반되는 근거가 제시되었습니다.
+                        {% elif my_points[1] < 41 %}
+                        일부 관련 근거가 제시되었으나, 근거가 충분하지 않습니다.
+                        {% elif my_points[1] < hub_points[1] %}
+                        대체로 관련 근거가 제시되었지만, 일부 부족한 부분이 있거나, 근거의 충분성이 약간 부족합니다.
+                        {% elif my_points[1] < 81 %}
+                        <span class="highlight-text">대체로 충분한 근거가 제시되었고, 근거의 타당성도 적절한 수준입니다.</span>
+                        {% else %}
+                        <span class="highlight-text">충분한 근거가 대부분 제시되었고, 근거의 타당성이 강하게 느껴집니다.</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="result-content2">
+                    <div class="result-title2">
+                        설득력
+                    </div>
+                    <div class="result-text2">
+                        {% if my_points[2] < 21 %}
+                        글의 주장이 완전히 잘못된 정보나 논리적 오류 등으로 인해 설득력이 없습니다.
+                        {% elif my_points[2] < 41 %}
+                        글의 주장이 일부 잘못된 정보나 논리적 오류 등을 포함하고 있어서 설득력이 부족합니다.
+                        {% elif my_points[2] < hub_points[2] %}
+                        글의 주장에는 일부 적절한 근거가 제시되었지만, 설득력이 충분하지 못합니다.
+                        {% elif my_points[2] < 81 %}
+                        <span class="highlight-text">글의 주장에는 일정 수준 이상의 적절한 근거가 제시되어 있으며, 설득력 있는 글입니다.</span>
+                        {% else %}
+                        <span class="highlight-text">글의 주장에 적절한 근거가 충분히 제시되어 있으며, 논리적인 설득력이 충분합니다.</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="result-content2">
+                    <div class="result-title2">
+                        참신성
+                    </div>
+                    <div class="result-text2">
+                        {% if my_points[3] < 21 %}
+                        글에서 제시하는 내용이 전혀 참신하지 않으며, 이미 알고 있거나 상식으로 간주되는 내용이 포함되어 있습니다.
+                        {% elif my_points[3] < 41 %}
+                        글에서 제시하는 내용은 일부 참신한 아이디어를 포함하지만, 대체로 매우 예상 가능하거나 상식적인 내용입니다.
+                        {% elif my_points[3] < hub_points[3] %}
+                        글에서 제시하는 내용은 일부 참신한 아이디어나 관점을 포함하고 있지만, 대체로 보편적이거나 이미 알려진 내용과 크게 다르지 않습니다.
+                        {% elif my_points[3] < 81 %}
+                        <span class="highlight-text">글에서 제시하는 내용은 보통 수준의 참신성을 가지고 있으며, 새로운 관점을 제시하거나 이전에 생각하지 못했던 아이디어를 포함하고 있습니다.</span>
+                        {% else %}
+                        <span class="highlight-text">글에서 제시하는 내용은 높은 수준의 참신성을 가지고 있으며, 새로운 관점을 제시하고 기존의 것과는 크게 다른 아이디어를 포함하고 있습니다.</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </dic>
+        <div class="wrapper2"> 
+            <div>
+                <h3>
+                    {% if my_class[1] == True %}
+                        전체적으로 우수한 글이네요!! <br>
+                    {% else %}
+                        열심히 글을 쓰셨지만, 보완해야 할 부분이 있습니다. 확인해보시겠어요? <br>
+                    {% endif %}
+                </h3>
+                <details>
+                    <summary class='pointer'>보완해야 할 부분 확인하기</summary>
+                    <div class='wrapper2'>
+                        <div class='last-bottom-padding'>
+                            <ul class="ul">
+                                {% for key, value in my_class[0].items() %}
+                                    {% if value == False %}
+                                        {% if key == "논리성" %}
+                                            <li><b>&lt;논리적인 글을 쓰는 법&gt;</b><br>먼저 무엇을 말할지 정해야 해요. 그리고 그 주제와 관련된 정보를 찾아서 글을 쓸 계획을 세워야 해요. 마지막으로 이야기를 잘 풀어서, 상대방이 이해하기 쉽게 써야 해요! </li> <br>
+                                        {% elif key == "근거의 풍부함" %}
+                                            <li><b>&lt;풍부한 근거를 갖는 글 쓰는 법&gt;</b><br>먼저 자료 조사를 해야 해요. 그리고 이 자료들을 참고하여 내용을 구성하고, 예시나 증거를 사용해서 글을 더욱 강화시켜야 해요! 또한 참고한 자료의 출처를 표기하는 것도 중요하답니다!</li> <br>
+                                        {% elif key == "설득력" %}
+                                            <li><b>&lt;설득력 있는 글 쓰는 법&gt;</b><br>먼저 상대방의 관점을 이해하고, 그에 대한 대처책을 생각해야 해요. 그리고 예시나 증거를 활용하여 상대방의 생각을 바꿀 수 있는 논리적인 주장을 제시해야 해요! </li> <br>
+                                        {% else %}
+                                            <li><b>&lt;참신한 글 쓰는 법&gt;</b><br>먼저 주제에 대해 다양한 각도에서 바라보고, 새로운 아이디어를 찾아봐야 해요. 그리고 창의적인 예시나 비유를 사용하여 흥미로운 내용을 구성해야 해요! </li> <br>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>  
+                    </div>
+                </details>
+            <div>
+        </div>
         <footer>
                 Made by AI Model : DaegonYu     |       Web Page : IlhanYu
         </footer>
+
         <script>
             let logicalBarPersent = document.querySelector(".logical-bar");
             let logicalBlue = document.querySelector(".logical-blue");
