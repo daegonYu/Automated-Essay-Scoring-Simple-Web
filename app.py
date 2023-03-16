@@ -11,16 +11,16 @@ app = Flask(__name__)
 # 모델 불러오기
 config_ = 'models/chunk_model.bin10/config.json'    # config는 모두 같다.
 
-chunk_model_path = 'models/chunk_model.bin10'; word_doc_model_path = 'models/word_doc_model.bin10' 
+chunk_model_path = 'models/logical_finished_chunk_model.bin1'; word_doc_model_path = 'models/logical_finished_word_doc_model.bin1' 
 logical_model = DocumentBertScoringModel(chunk_model_path=chunk_model_path, word_doc_model_path=word_doc_model_path, config=config_)
 
-chunk_model_path = 'models/chunk_model.bin18'; word_doc_model_path = 'models/word_doc_model.bin18' 
+chunk_model_path = 'models/reason_finished_chunk_model.bin1'; word_doc_model_path = 'models/reason_finished_word_doc_model.bin1' 
 reason_model = DocumentBertScoringModel(chunk_model_path=chunk_model_path, word_doc_model_path=word_doc_model_path, config=config_)
 
-chunk_model_path = 'models/chunk_model.bin25'; word_doc_model_path = 'models/word_doc_model.bin25' 
+chunk_model_path = 'models/persuasive_finished_chunk_model.bin1'; word_doc_model_path = 'models/persuasive_finished_word_doc_model.bin1' 
 persuasive_model = DocumentBertScoringModel(chunk_model_path=chunk_model_path, word_doc_model_path=word_doc_model_path, config=config_)
 
-chunk_model_path = 'models/chunk_model.bin29'; word_doc_model_path = 'models/word_doc_model.bin29' 
+chunk_model_path = 'models/novelty_finished_chunk_model.bin1'; word_doc_model_path = 'models/novelty_finished_word_doc_model.bin1' 
 novelty_model = DocumentBertScoringModel(chunk_model_path=chunk_model_path, word_doc_model_path=word_doc_model_path, config=config_)
 
 # 경로 확인 필요

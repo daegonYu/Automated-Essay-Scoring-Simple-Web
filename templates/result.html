@@ -176,10 +176,15 @@
                 color: #392f31;
 
             }
-            .big-green
+            .big-green2
             {
                 color: cornflowerblue;
                 font-size: 32px;
+            }
+            .big-green
+            {
+                color: forestgreen;
+                font-size: 35px;
             }
             .big-red
             {
@@ -431,9 +436,9 @@
                         <div class="evaluation-under">
                             당신의 에세이는 상위 <span class="persent">{{my_total_grade}}% </span>입니다. <br>
                             {% if my_class[1] == True %}
-                                <span class="big-green">전체적으로 우수한 글이네요!!</span>
+                                <span class="big-green2">전체적으로 우수한 글이네요!!</span>
                             {% else %}
-                                <span class="big-red">{{big_small_element[0]}}</span>은 적절하지만 
+                                <span class="big-green">{{big_small_element[0]}}</span>은 적절하지만 
                                 <span class="big-red">{{big_small_element[1]}}</span> 은 부족한 글입니다.
                             {% endif %}
                             
